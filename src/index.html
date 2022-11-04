@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>emcAPP</title>
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <script src="https://kit.fontawesome.com/040595e6f4.js" crossorigin="anonymous"></script>
+
+        <script defer src="js/scripts.js"></script> 
+        <!-- <script> require("./renderer.js"); </script> -->
+        <!-- <script defer src="js/preload.js"></script>  -->
+        <script>
+            
+        </script>
+    </head>
+    <body onload="test();">
+        <div class="grid-container">
+
+            <!-- Header -->
+            <div class="item1">
+                <div class="header-nav">
+                    <button id="close-btn">X</button>
+                    <button id="max-btn">▢</button>
+                    <button id="min-btn">—</button>
+                </div>
+            </div>
+            
+            <!-- Menu -->
+            <div class="item2"> 
+                <div class="tab">
+                    <!-- The buttons to switch tab content -->
+                    <div id="tab-tempbox">
+                        <button class="tablinks" onclick="openTab(event, 'Server'); loadServer();"  id="_server">Server</button>
+                        <button class="tablinks" onclick="openTab(event, 'Townless')"   id="_townless">Townless</button>
+                        <button class="tablinks" onclick="openTab(event, 'Track')"      id="_track">Track</button>
+                        <button class="tablinks" onclick="openTab(event, 'Nation')"     id="_nation">Nation</button>
+                        <button class="tablinks" onclick="openTab(event, 'Town')"       id="_town">Town</button>
+                        <button class="tablinks" onclick="openTab(event, 'Resident')"   id="_resident">Residents</button>
+                        <button class="tablinks" onclick="openTab(event, 'Vote')"       id="_vote">Vote</button>
+                    </div>
+                  
+                    <!-- footer of menu -->
+                    <div id="tab-tempbox">
+                        <box><p>Made by nomad <3</p></box>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Main -->
+            <div class="item3">
+
+                <!-- Different tab content -->
+                <!-- Server -->
+                <div id="Server" class="tabcontent"> 
+
+                    <div class="tab-grid-container">
+                        <div class="tab-item1">
+                            <p>Displays the current server status.</p>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p id="item2-content-server"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Townless -->
+                <div id="Townless" class="tabcontent">
+                    <div class="tab-grid-container">
+                        <div class="tab-item1">
+                            <p>Displays the currently online townless players.</p>
+                        </div>
+
+                        <div class="tab-item2" id="scrollable">
+                            <div class="townless-column">
+                                <div class="townless-sub-column-1">
+                                    <div class="townless-sub-sub-column-2">
+                                        <p id="item2-content-townless-1"></p>
+                                    </div>
+                                </div>
+                                <div class="townless-sub-column-2"></div>
+                            </div>
+
+                            <div class="townless-column">
+                                <div class="townless-sub-column-1">
+                                    <div class="townless-sub-sub-column-2">
+                                        <p id="item2-content-townless-2"></p>
+                                    </div>
+                                </div>
+                                <div class="townless-sub-column-2"></div>
+                            </div>
+
+                            <div class="townless-column">
+                                <div class="townless-sub-column-1">
+                                    <div class="townless-sub-sub-column-2">
+                                        <p id="item2-content-townless-3"></p>
+                                    </div>
+                                </div>
+                                <div class="townless-sub-column-2"></div>
+                            </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <!-- Track -->
+                <div id="Track" class="tabcontent">
+                    <div class="tab-grid-container">
+
+                        <div class="tab-item1">
+                            <div class="wrap">
+                                <div class="search">
+                                   <input type="text" class="searchTerm" id="track-input" placeholder="player name">
+                                   <button type="submit" class="searchButton" id="track-btn"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p id="track-tab">this is a test text!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nation -->
+                <div id="Nation" class="tabcontent">
+                    <div class="tab-grid-container">
+
+                        <div class="tab-item1">
+                            <div class="wrap">
+                                <div class="search">
+                                   <input type="text" class="searchTerm" id="nation-input" placeholder="nation name">
+                                   <button type="submit" class="searchButton" id="nation-btn"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p id="nation-tab">this is a test text!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Town -->
+                <div id="Town" class="tabcontent">
+                    <div class="tab-grid-container">
+
+                        <div class="tab-item1">
+                            <div class="wrap">
+                                <div class="search">
+                                   <input type="text" class="searchTerm" id="town-input" placeholder="town name">
+                                   <button type="submit" class="searchButton" id="town-btn"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p id="town-tab">this is a test text!</p>
+                        </div>
+                    </div>
+                </div>
+              
+                <!-- Residents -->
+                <div id="Resident" class="tabcontent">
+                    <div class="tab-grid-container">
+
+                        <div class="tab-item1">
+                            <div class="wrap">
+                                <div class="search">
+                                   <input type="text" class="searchTerm" id="resident-input" placeholder="player name">
+                                   <button type="submit" class="searchButton" id="resident-btn"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p id="resident-tab">this is a test text!</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Vote -->
+                <div id="Vote" class="tabcontent">
+                    <div class="tab-grid-container">
+
+                        <div class="tab-item1">
+                            <p>Vote from the application.</p>
+                        </div>
+
+                        <div class="tab-item2">
+                            <p>this is a test text!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>  
+        </div>
+        
+        <script src="./js/renderer.js"></script>
+    </body>
+</html>

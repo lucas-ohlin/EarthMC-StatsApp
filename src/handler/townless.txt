@@ -1,0 +1,42 @@
+[
+  {
+    "x": 8831,
+    "y": 64,
+    "z": 1258,
+    "isUnderground": false,
+    "nickname": "BigJenny0",
+    "name": "BigJenny0"
+  },
+  {
+    "x": 558,
+    "y": 74,
+    "z": -8644,
+    "isUnderground": false,
+    "nickname": "Rubik_s",
+    "name": "Rubik_s"
+  },
+  {
+    "x": 413,
+    "y": 70,
+    "z": -6834,
+    "isUnderground": false,
+    "nickname": "Spazotron47",
+    "name": "Spazotron47"
+  },
+  {
+    "x": 19617,
+    "y": 97,
+    "z": -7550,
+    "isUnderground": false,
+    "nickname": "speedyboi",
+    "name": "speedyboi"
+  },
+  {
+    "x": 13691,
+    "y": 71,
+    "z": -4237,
+    "isUnderground": false,
+    "nickname": "theonlyjakever2",
+    "name": "theonlyjakever2"
+  }
+]
