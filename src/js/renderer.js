@@ -51,7 +51,7 @@ document.getElementById('resident-btn').addEventListener('click', () => {   //re
 window.addEventListener('DOMContentLoaded', () => { 
     document.getElementById('item2-content-townless-1').addEventListener('click', (e) => {
         if(e.target.id == 'btn-value') {
-        alert('test');
+            alert('test');
         }
     });
 });
@@ -71,13 +71,13 @@ api.receive("server_recieved", (event, data) => { //server
                             'The server is '+ serverBool +'<br>'+'<br>'+
                             'Max Pop: '+ dServer.max +'<br>'+
                             'In Server: '+ dServer.online +'<br>'+
-                            'In Queue: '+ dServer.queue;
+                            'In Queue: '+ dServer.queue +'<br>'+
+                            'In Aurora: '+ dServer.aurora +'<br>'+
+                            'In Nova: ' + dServer.nova;
 });
 
 
 api.receive("townless_recieved", (event, data) => { //townless
-
-    debug.log("Townless call recivied.");
 
     //As long as the data isn't empty (null)
     if (!data.length == 0) {
@@ -86,10 +86,16 @@ api.receive("townless_recieved", (event, data) => { //townless
         var objArray = [] //Base Array
         const threeArray = [[],[],[]] //Split Array 
         
-        //Pushes the json data into the base array
-        for(var i = 0; i < dTownless.length; i++) 
-            var obj = dTownless[i]; objArray.push(obj.name);
+        console.log(dTownless);
 
+        //Pushes the json data into the base array
+        for(var i = 0; i < dTownless.length; i++) {
+
+            var obj = dTownless[i]; 
+            objArray.push(obj.name);
+
+        }
+        
         //splits orgArray into n(3) sub arrays
         var n = 3; 
         var namesPerColumn = Math.ceil(objArray.length / 3); 
@@ -108,7 +114,7 @@ api.receive("townless_recieved", (event, data) => { //townless
 
         }
 
-        debug.log(threeArray);
+        console.log(threeArray);
 
         //Clear the Buttons
         document.getElementById("item2-content-townless-1").innerHTML = '';
@@ -123,9 +129,9 @@ api.receive("townless_recieved", (event, data) => { //townless
 
     else {
 
-        console.log("test");
+        console.log("An error occured");
 
-    } // document.getElementById("item2-content-townless-1").innerHTML += "<p>" + test + "</p>"; if there's no townless players online
+    } 
 
 });
 
@@ -145,7 +151,7 @@ api.receive("nation_recieved", (event, data) => { //nation
     var Nation = JSON.parse(data); 
     document.getElementById("nation-tab").innerHTML =   Nation.name+'´s leader: ' +Nation.king+ '<br>' +
                                                         Nation.residents.length + ' citizens' + '<br>' + '<br>' +
-                                                        'Capital: '+Nation.capitalName+'<br>'+' Size: '+Nation.area+'<br>'+' Cords: '+'X:'+Nation.capitalX+' | '+'Z:'+Nation.capitalZ+ '<br>' + '<br>' +
+                                                        'Capital: '+Nation.capital.name+'<br>'+' Size: '+Nation.area+'<br>'+' Cords: '+'X:'+Nation.capital.x+' | '+'Z:'+Nation.capital.z+ '<br>' + '<br>' +
                                                         'Towns in nation:' + '<br>' + Nation.towns  
 });
 
@@ -153,6 +159,7 @@ api.receive("nation_recieved", (event, data) => { //nation
 api.receive("town_recieved", (event, data) => { //town
     console.log("Recieved");
     var town = JSON.parse(data); 
+    console.log(town);
     document.getElementById("town-tab").innerHTML =     town.name+'´s leader: ' +town.mayor+ '<br>' + '<br>' +
                                                         town.residents.length + ' citizens' + '<br>' +
                                                         'Size: ' + town.area + '<br>' +
@@ -164,6 +171,7 @@ api.receive("town_recieved", (event, data) => { //town
 api.receive("resident_recieved", (event, data) => { //town
     console.log("Recieved");
     var player = JSON.parse(data); 
+    console.log(player);
     document.getElementById("resident-tab").innerHTML = player.name + '<br>' + '<br>' +
                                                         'Nation: ' + player.nation + '<br>' +
                                                         'Town: ' + player.town + '<br>' +

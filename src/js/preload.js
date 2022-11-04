@@ -21,9 +21,8 @@ contextBridge.exposeInMainWorld(
 
             let validChannels = ["server_recieved","townless_recieved",
                                 "track_recieved","nation_recieved","town_recieved","resident_recieved"];
-
+            
             if (validChannels.includes(channel)) 
-                // Deliberately strip event as it includes `sender` 
                 ipcRenderer.on(channel, data)
             
         }

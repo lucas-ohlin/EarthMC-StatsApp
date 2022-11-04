@@ -35,7 +35,7 @@ const createWindow = () => {
 
 	//Load file from index.html
 	mainWindow.loadFile(path.join(__dirname, '../index.html'));
-	// mainWindow.webContents.openDevTools(); //devtools for use if needed
+	mainWindow.webContents.openDevTools(); //devtools for use if needed
 
 	//Quit the application
 	ipcMain.on('quit-app', () => {
@@ -79,8 +79,6 @@ const createWindow = () => {
 
 			var townless = await emc.Aurora.Players.townless().then(array => { return array }); // npm package
 			mainWindow.webContents.send("townless_recieved", JSON.stringify(townless, null, 2));
-			console.log(townless);
-			console.log("Townless call sent");
 
 		}run();
 
@@ -111,7 +109,7 @@ const createWindow = () => {
 			console.log("called.");
 			console.log(data);
 			
-			var nation = await emc.Aurora.getNation(data).then(nation => { return nation }); // npm package
+			var nation = await emc.Aurora.Nations.get(data).then(nation => { return nation }); // npm package
 			console.log(nation);
 
 			mainWindow.webContents.send("nation_recieved", JSON.stringify(nation, null, 2));
@@ -125,7 +123,7 @@ const createWindow = () => {
 
 		async function run() { 
 
-			var town = await emc.Aurora.getTown(data).then(town => { return town }); // npm package
+			var town = await emc.Aurora.Towns.get(data).then(town => { return town }); // npm package
 			console.log(town);
 			mainWindow.webContents.send("town_recieved", JSON.stringify(town, null, 2));
 
@@ -137,7 +135,7 @@ const createWindow = () => {
 		
 		async function run() { 
 
-			var resident = await emc.Aurora.getResident(data).then(resident => { return resident }); // npm package
+			var resident = await emc.Aurora.Residents.get(data).then(resident => { return resident }); // npm package
 			mainWindow.webContents.send("resident_recieved", JSON.stringify(resident, null, 2));
 
 		}run();
