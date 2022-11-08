@@ -148,11 +148,13 @@ api.receive("track_recieved", (event, data) => { //town
 //Nation API recieve
 api.receive("nation_recieved", (event, data) => { //nation
     console.log("Recieved");
-    var Nation = JSON.parse(data); 
-    document.getElementById("nation-tab").innerHTML =   Nation.name+'´s leader: ' +Nation.king+ '<br>' +
-                                                        Nation.residents.length + ' citizens' + '<br>' + '<br>' +
-                                                        'Capital: '+Nation.capital.name+'<br>'+' Size: '+Nation.area+'<br>'+' Cords: '+'X:'+Nation.capital.x+' | '+'Z:'+Nation.capital.z+ '<br>' + '<br>' +
-                                                        'Towns in nation:' + '<br>' + Nation.towns  
+    console.log(data);
+    var nation = JSON.parse(data); 
+    document.getElementById("nation-tab").innerHTML =   nation[0][0].name+'´s leader: ' +nation[0][0].king+ '<br>' +
+                                                        nation[0][0].residents.length + ' citizens' + '<br>' + '<br>' +
+                                                        'Capital: '+nation[0][0].capital.name+'<br>'+' Size: '+nation[0][0].area+'<br>'+' Cords: '+'X:'+nation[0][0].capital.x+' | '+'Z:'+nation[0][0].capital.z+ '<br>' + '<br>' +
+                                                        'Towns: ' + nation[0][0].towns.length + '<br>' +
+                                                        'Inviteable towns:' + nation[0][1].name
 });
 
 //Town API recieve
@@ -160,11 +162,12 @@ api.receive("town_recieved", (event, data) => { //town
     console.log("Recieved");
     var town = JSON.parse(data); 
     console.log(town);
-    document.getElementById("town-tab").innerHTML =     town.name+'´s leader: ' +town.mayor+ '<br>' + '<br>' +
+    document.getElementById("town-tab").innerHTML =     'Nation: ' + town.nation + '<br>' + 
+                                                        town.name+'´s leader: ' +town.mayor+ '<br>' + '<br>' +
                                                         town.residents.length + ' citizens' + '<br>' +
                                                         'Size: ' + town.area + '<br>' +
                                                         'Location: '+'x:'+town.x+' z:'+town.z + '<br>' +
-                                                        'pvp:'+town.pvp+' mobs:'+town.mobs+' public:'+town.public+' explosion:'+town.explosion+' fire:'+town.fire+ '<br>' + '<br>' + 
+                                                        'pvp:'+town.flags.pvp+' mobs:'+town.flags.mobs+' public:'+town.flags.public+' explosion:'+town.flags.explosion+' fire:'+town.flags.fire+ '<br>' + '<br>' + 
                                                         'Citizens:' + '<br>' + town.residents  
 });
 

@@ -13,7 +13,7 @@ contextBridge.exposeInMainWorld(
                                 "track-search","nation-search","town-search","resident-search"];
 
             if (validChannels.includes(channel)) 
-                ipcRenderer.send(channel, data);
+                ipcRenderer.send(channel, data); 
 
         },
         //Recieve data between the two channels safely

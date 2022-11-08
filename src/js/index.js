@@ -94,7 +94,7 @@ const createWindow = () => {
 
 		async function run() { 
 
-			var player = await emc.Aurora.getOnlinePlayer(data).then(player => { return player }) // npm package
+			var player = await emc.Aurora.online(data).then(player => { return player }) // npm package
 			console.log(player);
 			mainWindow.webContents.send("track_recieved", JSON.stringify(player, null, 2));
 
@@ -106,13 +106,12 @@ const createWindow = () => {
 
 		async function run() { 
 			
-			console.log("called.");
-			console.log(data);
-			
 			var nation = await emc.Aurora.Nations.get(data).then(nation => { return nation }); // npm package
-			console.log(nation);
+			var nation_invitable = await emc.Aurora.Towns.invitable(data).then(nation_invitable => {return nation_invitable});
+			console.log(nation_invitable);
 
-			mainWindow.webContents.send("nation_recieved", JSON.stringify(nation, null, 2));
+			mainWindow.webContents.send("nation_recieved", JSON.stringify([[nation], [nation_invitable]], null, 2));
+			// mainWindow.webContents.send("nation_recieved", JSON.stringify(nation_invitable, null, 2));
 			console.log("sent");
 
 		}run();
