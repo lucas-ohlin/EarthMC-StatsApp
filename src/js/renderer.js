@@ -10,25 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {               //server, ho
     api.send('server');
 });
 
-document.getElementById('_server').addEventListener('click', () => {    //server
+//server event listener
+document.getElementById('_server').addEventListener('click', () => {    
     api.send('server');
 });
-// document.getElementById('_track').addEventListener('click', () => {    //nearby
-//     api.send('townless');
-// });
-document.getElementById('_townless').addEventListener('click', () => {  //townless
+//townless
+document.getElementById('_townless').addEventListener('click', () => {  
     api.send('townless');
 });
-// document.getElementById('_nation').addEventListener('click', () => {    //nation
-//     api.send('townless');
-// }); 
-// document.getElementById('_town').addEventListener('click', () => {      //town
-//     api.send('townless');
-// });
-// document.getElementById('_resident').addEventListener('click', () => {  //resident
-//     api.send('townless');
-// });
-
 
 //search button in nation
 document.getElementById('track-btn').addEventListener('click', () => {      //track
@@ -37,6 +26,7 @@ document.getElementById('track-btn').addEventListener('click', () => {      //tr
 document.getElementById('nation-btn').addEventListener('click', () => {     //nation
     api.send('nation-search', document.getElementById('nation-input').value);
 });
+
 //search button in town
 document.getElementById('town-btn').addEventListener('click', () => {       //town
     api.send('town-search', document.getElementById('town-input').value);
@@ -44,8 +34,6 @@ document.getElementById('town-btn').addEventListener('click', () => {       //to
 document.getElementById('resident-btn').addEventListener('click', () => {   //resident
     api.send('resident-search', document.getElementById('resident-input').value);
 });
-
-
 
 //test
 window.addEventListener('DOMContentLoaded', () => { 
@@ -69,8 +57,8 @@ api.receive("server_recieved", (event, data) => { //server
 
     document.getElementById("item2-content-server").innerHTML = 
                             'The server is '+ serverBool +'<br>'+'<br>'+
-                            'Max Pop: '+ dServer.max +'<br>'+
-                            'In Server: '+ dServer.online +'<br>'+
+                            // 'Max Pop: '+ dServer.max +'<br>'+
+                            // 'In Server: '+ dServer.online +'<br>'+
                             'In Queue: '+ dServer.queue +'<br>'+
                             'In Aurora: '+ dServer.aurora +'<br>'+
                             'In Nova: ' + dServer.nova;
@@ -122,15 +110,22 @@ api.receive("townless_recieved", (event, data) => { //townless
         document.getElementById("item2-content-townless-3").innerHTML = '';
     
         //Creates buttons for each of the objects in threeArray
-        for (var i = 0; i < threeArray[0].length; i++)          {document.getElementById("item2-content-townless-1").innerHTML += "<button id='btn-value"+[i]+"' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[0][i] + "</button>" + "<br>";}
-        for (var i = 0+50; i < threeArray[1].length+50; i++)    {document.getElementById("item2-content-townless-2").innerHTML += "<button id='btn-value"+[i]+"' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[1][i-50] + "</button>" + "<br>";}
-        for (var i = 0+100; i < threeArray[2].length+100; i++)  {document.getElementById("item2-content-townless-3").innerHTML += "<button id='btn-value"+[i]+"' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[2][i-100] + "</button>" + "<br>";}
+        for (var i = 0; i < threeArray[0].length; i++) {
+            document.getElementById("item2-content-townless-1").innerHTML += "<button id='btn-value"+[i]+
+            "' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[0][i] + "</button>" + "<br>";
+        }
+        for (var i = 0+50; i < threeArray[1].length+50; i++) {
+            document.getElementById("item2-content-townless-2").innerHTML += "<button id='btn-value"+[i]+
+            "' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[1][i-50] + "</button>" + "<br>";
+        }
+        for (var i = 0+100; i < threeArray[2].length+100; i++) {
+            document.getElementById("item2-content-townless-3").innerHTML += "<button id='btn-value"+[i]+
+            "' class='copy-btn2' onclick='copyValue(this.id)'>" + threeArray[2][i-100] + "</button>" + "<br>";
+        }
     } 
 
     else {
-
         console.log("An error occured");
-
     } 
 
 });
@@ -162,9 +157,11 @@ api.receive("town_recieved", (event, data) => { //town
     console.log(town);
     document.getElementById("town-tab").innerHTML =     town.name+'´s leader: ' +town.mayor+ '<br>' + '<br>' +
                                                         town.residents.length + ' citizens' + '<br>' +
-                                                        'Size: ' + town.area + '<br>' +
+                                                        'Size: ' + town.area + 'plots' + '<br>' +
                                                         'Location: '+'x:'+town.x+' z:'+town.z + '<br>' +
-                                                        'pvp:'+town.pvp+' mobs:'+town.mobs+' public:'+town.public+' explosion:'+town.explosion+' fire:'+town.fire+ '<br>' + '<br>' + 
+                                                        'Map: ' + '<a href=https://earthmc.net/map/aurora/?worldname=earth&mapname=flat&zoom=5&x='+town.x+'&z='+town.z+'>'+'Town On The Map'+'</a>' 
+                                                        // 'pvp:'+town.pvp+' mobs:'+town.mobs+' public:'+town.public+' explosion:'+town.explosion+' fire:'+town.fire
+                                                        + '<br>' + '<br>' + 
                                                         'Citizens:' + '<br>' + town.residents  
 });
 

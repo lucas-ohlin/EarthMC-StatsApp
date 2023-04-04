@@ -6,7 +6,7 @@ const fetch = require("node-fetch")
 const path = require('path');
 
 
-if (require('electron-squirrel-startup')) 
+if (require('electron-squirrel-startup'))  
   	app.quit();
 
 //Application creation
@@ -24,18 +24,17 @@ const createWindow = () => {
 		//Other options for the application
 		frame: false,
 		webPreferences: {
-
 			preload: path.join(__dirname, 'preload.js'),
 			enableRemoteModule: true,
 			nodeIntegration: false,
-      
     	}
 
   	}); 
 
 	//Load file from index.html
 	mainWindow.loadFile(path.join(__dirname, '../index.html'));
-	mainWindow.webContents.openDevTools(); //devtools for use if needed
+	//devtools for use if needed
+	mainWindow.webContents.openDevTools(); 
 
 	//Quit the application
 	ipcMain.on('quit-app', () => {
@@ -44,19 +43,14 @@ const createWindow = () => {
 
 	//Maximize/unmazimize the application
 	ipcMain.on('maximize-app', () => {
-		
 		if (!mainWindow.isMaximized()) 
 			mainWindow.maximize();       
-
 		else 
 			mainWindow.unmaximize();
-		
 	});
 	//Minimize application
 	ipcMain.on('minimize-app', () => {
-
 		mainWindow.minimize();    
-		
 	});
 	
   	//------Package call from the application------//
@@ -156,15 +150,10 @@ const createWindow = () => {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
-
 	if (process.platform !== 'darwin') 
 		app.quit();
-
-
 });
 
 app.on('activate', () => {
-
   	if (mainWindow === null) createWindow();
-
 });

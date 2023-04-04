@@ -2,17 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>emcAPP</title>
-        <link rel="stylesheet" href="index.css" />
+        <title>EarthMC Information Application</title>
+        <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <script src="https://kit.fontawesome.com/040595e6f4.js" crossorigin="anonymous"></script>
 
+        <!--Scripts that doesn't need the document to be loaded-->
         <script defer src="js/scripts.js"></script> 
-        <!-- <script> require("./renderer.js"); </script> -->
-        <!-- <script defer src="js/preload.js"></script>  -->
-        <script>
-            
-        </script>
     </head>
     <body onload="">
         <div class="grid-container">
@@ -198,6 +194,7 @@
             </div>  
         </div>
         
+        <!--Scripts that need all of the document to be loaded-->
         <script src="./js/renderer.js"></script>
     </body>
 </html>
