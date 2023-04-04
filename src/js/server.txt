@@ -1,1 +1,1 @@
-{"queue":2,"serverOnline":true,"online":164,"max":200,"nova":4,"aurora":158}
+{"queue":2,"serverOnline":true,"online":137,"max":200,"nova":1,"aurora":134}

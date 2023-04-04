@@ -134,20 +134,23 @@ api.receive("townless_recieved", (event, data) => { //townless
 api.receive("track_recieved", (event, data) => { //town
     console.log("Recieved");
     var Nation = JSON.parse(data); 
-    document.getElementById("track-tab").innerHTML =    Nation.name+'´s leader: ' +Nation.king+ '<br>' +
-                                                        Nation.residents.length + ' citizens' + '<br>' + '<br>' +
-                                                        'Capital: '+Nation.capitalName+'<br>'+' Size: '+Nation.area+'<br>'+' Cords: '+'X:'+Nation.capitalX+' | '+'Z:'+Nation.capitalZ+ '<br>' + '<br>' +
-                                                        'Towns in nation:' + '<br>' + Nation.towns  
+    document.getElementById("track-tab").innerHTML =    nation.name+'´s leader: ' +nation.king+ '<br>' +
+                                                        nation.residents.length + ' citizens' + '<br>' + '<br>' +
+                                                        'Capital: '+nation.capitalName+'<br>'+' Size: '+nation.area+'<br>'+' Cords: '+'X:'+nation.capitalX+' | '+'Z:'+nation.capitalZ+ '<br>' + '<br>' +
+                                                        'Towns in nation:' + '<br>' + nation.towns  
 });
 
 //Nation API recieve
 api.receive("nation_recieved", (event, data) => { //nation
     console.log("Recieved");
-    var Nation = JSON.parse(data); 
-    document.getElementById("nation-tab").innerHTML =   Nation.name+'´s leader: ' +Nation.king+ '<br>' +
-                                                        Nation.residents.length + ' citizens' + '<br>' + '<br>' +
-                                                        'Capital: '+Nation.capital.name+'<br>'+' Size: '+Nation.area+'<br>'+' Cords: '+'X:'+Nation.capital.x+' | '+'Z:'+Nation.capital.z+ '<br>' + '<br>' +
-                                                        'Towns in nation:' + '<br>' + Nation.towns  
+    var nation = JSON.parse(data); 
+    document.getElementById("nation-tab").innerHTML =   nation.name+'´s leader: ' + nation.king+ '<br>' +
+                                                        nation.towns.length + ' towns' + 
+                                                        nation.residents.length + ' citizens' +'<br>' + '<br>' +
+                                                        'Capital: '+ nation.capital.name+'<br>'+' Size: ' + nation.area+'<br>'+' Cords: '+'X:'+nation.capital.x+' | '+'Z:'+nation.capital.z  +'<br>'
+                                                        +'Map: ' + '<a href=https://earthmc.net/map/aurora/?worldname=earth&mapname=flat&zoom=5&x='+nation.capital.x+'&z='+nation.capital.z+'>'+'Nation On The Map'+'</a>'
+                                                        // + '<br>' + '<br>' +
+                                                        // 'Towns in nation:' + '<br>' + Nation.towns  
 });
 
 //Town API recieve
@@ -157,12 +160,12 @@ api.receive("town_recieved", (event, data) => { //town
     console.log(town);
     document.getElementById("town-tab").innerHTML =     town.name+'´s leader: ' +town.mayor+ '<br>' + '<br>' +
                                                         town.residents.length + ' citizens' + '<br>' +
-                                                        'Size: ' + town.area + 'plots' + '<br>' +
-                                                        'Location: '+'x:'+town.x+' z:'+town.z + '<br>' +
+                                                        'Size: ' + town.area + ' plots' + '<br>' +
+                                                        'Cords: '+'x:'+town.x+' z:'+town.z + '<br>' +
                                                         'Map: ' + '<a href=https://earthmc.net/map/aurora/?worldname=earth&mapname=flat&zoom=5&x='+town.x+'&z='+town.z+'>'+'Town On The Map'+'</a>' 
                                                         // 'pvp:'+town.pvp+' mobs:'+town.mobs+' public:'+town.public+' explosion:'+town.explosion+' fire:'+town.fire
-                                                        + '<br>' + '<br>' + 
-                                                        'Citizens:' + '<br>' + town.residents  
+                                                        // + '<br>' + '<br>' + 
+                                                        // 'Citizens:' + '<br>' + town.residents  
 });
 
 api.receive("resident_recieved", (event, data) => { //town

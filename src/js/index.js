@@ -136,6 +136,17 @@ const createWindow = () => {
 
 	});
 
+	//NPM PACKAGE TESTING
+	ipcMain.on('testing-search', (event, data) => { 
+		
+		async function run() { 
+
+			var resident = await emc.Aurora.get(data).then(info => { return info }); // npm package
+			mainWindow.webContents.send("testing_recieved", JSON.stringify(info, null, 2));
+
+		}run();
+
+	});
 
 
 
