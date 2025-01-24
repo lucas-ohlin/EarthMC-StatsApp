@@ -1,9 +1,0 @@
-{
-  "serverOnline": true,
-  "online": 117,
-  "max": 150,
-  "towny": 115,
-  "storming": false,
-  "thundering": false,
-  "queue": 2
-}
